@@ -1,0 +1,38 @@
+{
+  "statuses": [
+    {
+      "statusId": 1,
+      "status": "Pending"
+    },
+    {
+      "statusId": 2,
+      "status": "Approved"
+    },
+    {
+      "statusId": 3,
+      "status": "Rejected"
+    }
+  ],
+  "dashboard":{
+    "leaveBalance": 5,
+    "maximumLeaveBalance": 8,
+    "requests": [
+      {
+        "statusId": 1,
+        "status": "Pending"
+      },
+      {
+        "statusId": 2,
+        "status": "Approved"
+      },
+      {
+        "statusId": 3,
+        "status": "Rejected"
+      },
+      {
+        "statusId": 2,
+        "status": "Approved"
+      }
+    ]
+  }
+}

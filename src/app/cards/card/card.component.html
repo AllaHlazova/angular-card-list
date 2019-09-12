@@ -1,0 +1,9 @@
+<li class="card">
+<!--  <div>{{userObj| json}}</div>//чтобы вывести весь обьект-->
+
+  <div *ngIf="userObj.isInfoCard">{{userObj.title}}</div>
+  <div>{{userObj.subTitle}}</div>
+  <div>{{userObj.date * 1000 | date}}</div>
+  <div>{{userObj.isInfoCard}}</div>
+  <p><a [routerLink]="[id]">see detail</a></p>
+</li>

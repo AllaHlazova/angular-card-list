@@ -3,14 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { RequestsComponent } from './requests/requests.component';
+import { CardsComponent } from './cards/cards.component';
+import { CardComponent } from './cards/card/card.component';
+import { AppRoutingModule } from './app.routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { CardDetailComponent } from './card-detail/card-detail.component';
+import { ChartModule } from 'angular-highcharts';
+import { MainCardDetailComponent } from './main-card-detail/main-card-detail.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RequestsComponent,
+    CardsComponent,
+    CardComponent,
+    HeaderComponent,
+    CardDetailComponent,
+    MainCardDetailComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
