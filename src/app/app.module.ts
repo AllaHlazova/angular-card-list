@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
 import { ChartModule } from 'angular-highcharts';
 import { MainCardDetailComponent } from './main-card-detail/main-card-detail.component';
+import {ChartService} from './services/chart.service';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { MainCardDetailComponent } from './main-card-detail/main-card-detail.com
     CardComponent,
     HeaderComponent,
     CardDetailComponent,
-    MainCardDetailComponent,
+    MainCardDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { MainCardDetailComponent } from './main-card-detail/main-card-detail.com
     AppRoutingModule,
     ChartModule
   ],
-  providers: [],
+  providers: [ChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
