@@ -3,4 +3,6 @@ export class User {
   subTitle: string;
   date: number;
   isInfoCard: boolean;
+  daysLeft?: number;
 }
+

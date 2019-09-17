@@ -1,28 +1,29 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Chart} from 'angular-highcharts';
-import {SeriesOptionsType} from 'highcharts';
 import {ChartService} from '../services/chart.service';
+import {IChartConfig} from '../chartInt';
+import {User} from '../list';
+
 
 /* чтобы установить плагин,надо  установить нпм(https://www.npmjs.com/package/angular-highcharts)
 вынести в переменную параметры. здесь не важно в каком месте класса вставить код-поэтому создали перем.внутри - chart.
 название перем. должно совпадать с названием в файле card-detail.component.html
 
 спросить почему дописали 'as SeriesOptionsType'
-спросить можно ли было по другому вставить по центру 05
  */
 
 // const testData = [{name: '&nbsp&nbsp 05', y: 5}, {name: ' ', y: 2, color: '#eee'}];
+
 
 @Component({
   selector: 'app-card-detail',
   templateUrl: './card-detail.component.html',
   styleUrls: ['./card-detail.component.scss']
 })
+
 export class CardDetailComponent implements OnInit {
-  //  чтобы воспользоваться сервисом, создаем тут переменную(такая же как и в другом компоненте,где мы юзаем данный  чарт сервис)
-  // и пишем в конструкторе то же,как и в другом компоненте.так же в хтмл обращаемся к переменной чарт-чтобы вызвать метод.
-  public chart: Chart = this.chartService.createChart();
+
 
   // когда юзали чарт в одном месте использовали эту конструкцию.
   // public chart: Chart = new Chart({
@@ -96,17 +97,46 @@ export class CardDetailComponent implements OnInit {
   // });
 
   @Input() request;
+
   constructor(private route: ActivatedRoute, private chartService: ChartService) {}
 
   ngOnInit() {
+    //routing
     this.route.params.subscribe((params: Params) => {
       console.log(params.cardId);
 
+
       // this.http.get('api/cardDetail', {
-      //       //   id: params.cardId
-      //       // }).subscribe((data) => {
-      //       //   this.detCard = data;
-      //       // })//чтобы получить айдишник карты
+      //         id: params.cardId
+      //       }).subscribe((data) => {
+      //         this.getCard = data;
+      //       })//чтобы получить айдишник карты
     });
+
+    this.route.params.subscribe((params: Params) => {
+      console.log(params.cardId.user);
+    });
+
+    public userObj: User;
+
+    public testData = [{name: this.userObj.daysLeft, y: 5}, {y: 2.5, color: '#eee'}];
+
+    public prm: IChartConfig = {
+      height: 250,
+      width: 250,
+      size: 200,
+      innerSize: 170,
+      data: this.testData,
+      text:
+        `<div style="text-align: center;font-size: 35px">${this.testData[0].name}<div style="font-weight:lighter; font-size:20px;"> Leave Balance </div></div>`,
+      useHTML: true,
+      name: this.testData[0].name
+    };
+
+    //  чтобы воспользоваться сервисом, создаем тут переменную(такая же как и в другом компоненте,где мы юзаем данный  чарт сервис)
+    // и пишем в конструкторе то же,как и в другом компоненте.так же в хтмл обращаемся к переменной чарт-чтобы вызвать метод.
+
+    public chart: Chart; // = this.chartService.createChart(this.prm);
   }
-}
+
+

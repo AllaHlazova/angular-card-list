@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ListService} from '../services/list.service';
-import {User} from '../list';
+import { ListService } from '../services/list.service';
+import { User } from '../list';
 
 @Component({
   selector: 'app-cards',
@@ -13,8 +13,8 @@ export class CardsComponent implements OnInit {
   constructor(private httpService: ListService) {}
 
   ngOnInit() {
-
     this.httpService.getData().subscribe((data: User[]) => this.userList = data );
+    console.log( this.userList);
   }
 
 }

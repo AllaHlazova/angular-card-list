@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Chart} from 'angular-highcharts';
 import {SeriesOptionsType} from 'highcharts';
+import {IChartConfig} from '../chartInt';
 
-const testData = [{name: '&nbsp&nbsp 05', y: 5}, {name: ' ', y: 2, color: '#eee'}];
+// const testData = [{name: '05', y: 5}, {y: 2.5, color: '#eee'}];
+
+// create new file for interfaces
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,7 @@ const testData = [{name: '&nbsp&nbsp 05', y: 5}, {name: ' ', y: 2, color: '#eee'
 
 export class ChartService {
 
-  public createChart(): Chart {
+  public createChart(config: IChartConfig): Chart {
     return new Chart({
       chart: {
         backgroundColor: 'transparent',
@@ -18,8 +21,8 @@ export class ChartService {
         renderTo: 'TestDonut',
         spacing: [0, 0, 0, 0],
         type: 'pie',
-        height: 250,
-        width: 250
+        height: config.height,
+        width: config.width
       },
       colors: ['#1e90ff85'],
       credits: {
@@ -57,10 +60,10 @@ export class ChartService {
       },
       series: [
         {
-          data: testData,
-          name: '',
-          size: 200,
-          innerSize: 170,
+          data: config.data,
+          name: config.name,
+          size: config.size,
+          innerSize: config.innerSize,
           pointPadding: 0,
           groupPadding: 0,
           type: 'pie'
@@ -71,13 +74,16 @@ export class ChartService {
         style: {
           color: '#696969',
           fontFamily: 'Arial, Helvetica, sans',
-          fontSize: '35px',
+          fontSize: '20px',
           fontWeight: 'bold'
         },
-        text: testData[0].name + '<div style="font-weight: lighter;font-size: 15px;">Leave Balance</div>',
-        useHTML: true,
+        // text: `<div style="text-align: center; font-weight: lighter;font-size: 15px;">${testData[0].name} <br> Leave Balance</div>`,
+        // text: `<div>${testData[0].name} <br> Leave Balance</div>`,
+
+        text: config.text,
+        useHTML: config.useHTML,
         verticalAlign: 'middle',
-        y: 25
+        // y: 25
       }
     });
   }

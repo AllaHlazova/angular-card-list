@@ -1,39 +1,13 @@
-<!--<li class="card">-->
-<!--&lt;!&ndash;  <div>{{userObj| json}}</div>//чтобы вывести весь обьект&ndash;&gt;-->
-
-<!--  <div *ngIf="userObj.isInfoCard">{{userObj.title}}</div>-->
-<!--  <div>{{userObj.subTitle}}</div>-->
-<!--  <div>{{userObj.date * 1000 | date}}</div>-->
-<!--  <div>{{userObj.isInfoCard}}</div>-->
-<!--  <p><a [routerLink]="[id]">see detail</a></p>-->
-<!--</li>-->
-
-
-<!--<li class="card">-->
-<!--&lt;!&ndash;  покажет это, Если isInfoCard-тру&ndash;&gt;-->
-<!--  <div *ngIf="userObj.isInfoCard">{{userObj.title}}</div>-->
-<!--&lt;!&ndash;  покажет это, Если isInfoCard-фолс&ndash;&gt;-->
-<!--  <div *ngIf="!userObj.isInfoCard">lol</div>-->
-
-<!--  <div>{{userObj.subTitle}}</div>-->
-<!--  <div>{{userObj.date * 1000 | date}}</div>-->
-<!--  <div>{{userObj.isInfoCard}}</div>-->
-<!--  <p><a [routerLink]="[id]">see detail</a></p>-->
-<!--</li>-->
-
-
-
 <li class="card">
-  <div [routerLink]="[id]" style="height: 100%;" class="d-flex flex-column justify-content-center">
-
-      <div class="st-f-subTit" *ngIf="userObj.isInfoCard">{{userObj.subTitle}}</div>
-      <div class="st-f-date font-weight-bold" *ngIf="userObj.isInfoCard">{{userObj.date * 1000 | date}}</div>
-      <div class="st-f-title font-weight-bold" *ngIf="userObj.isInfoCard"> {{userObj.title}}</div>
-
-    <div class="st-f-title font-weight-bold" *ngIf="!userObj.isInfoCard">
-      <div [chart]="chart"></div>
+  <div [routerLink]="[id]" class="d-flex flex-column justify-content-center">
+    <div *ngIf="userObj.isInfoCard; else nonInfoCard">
+      <div id="TestDonut" [chart]="chart" class="m-auto p-0"></div>
+      <div class="st-f-title pt-0"> Leave </div>
     </div>
-    <div class="st-f-title" *ngIf="!userObj.isInfoCard"> Leave </div>
-
+    <ng-template #nonInfoCard>
+      <div class="st-f-subTit mt-3">{{userObj.subTitle}}</div>
+      <div class="st-f-date font-weight-bold">{{userObj.date * 1000 | date}}</div>
+      <div class="st-f-title font-weight-bold"> {{userObj.title}}</div>
+    </ng-template>
   </div>
 </li>

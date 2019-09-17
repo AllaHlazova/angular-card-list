@@ -3,24 +3,28 @@
     "title": "Payslip",
     "subTitle": "Next payslip",
     "date": 1558346256,
+    "daysLeft": 3,
     "isInfoCard": true
   },
   {
     "title": "Zilidium",
     "subTitle": "Estela Hill",
     "date": 1558347089,
+    "daysLeft": 1,
     "isInfoCard": true
   },
   {
     "title": "Zensor",
     "subTitle": "Ora Flowers",
     "date": 1558347089,
+    "daysLeft": 5,
     "isInfoCard": true
   },
   {
     "title": "Medicroix",
     "subTitle": "Shelton Bowers",
     "date": 1558347089,
+    "daysLeft": 1,
     "isInfoCard": true
   },
   {
@@ -39,6 +43,7 @@
     "title": "Letpro",
     "subTitle": "Millie Barton",
     "date": 1558347089,
+    "daysLeft": 4,
     "isInfoCard": true
   },
   {
@@ -51,12 +56,14 @@
     "title": "Radiantix",
     "subTitle": "Erma Jones",
     "date": 1558347089,
+    "daysLeft": 7,
     "isInfoCard": true
   },
   {
     "title": "Mixers",
     "subTitle": "Hewitt Banks",
     "date": 1558347089,
+    "daysLeft": 4,
     "isInfoCard": true
   },
   {
@@ -69,6 +76,7 @@
     "title": "Noralex",
     "subTitle": "Luz Stanley",
     "date": 1558347089,
+    "daysLeft": 6,
     "isInfoCard": true
   },
   {
@@ -87,12 +95,14 @@
     "title": "Maxemia",
     "subTitle": "Lorene Gordon",
     "date": 1558347089,
+    "daysLeft": 3,
     "isInfoCard": true
   },
   {
     "title": "Bluplanet",
     "subTitle": "Wallace Fischer",
     "date": 1558347089,
+    "daysLeft": 2,
     "isInfoCard": true
   },
   {
@@ -105,6 +115,7 @@
     "title": "Pasturia",
     "subTitle": "Emma Brennan",
     "date": 1558347089,
+    "daysLeft": 2,
     "isInfoCard": true
   },
   {
