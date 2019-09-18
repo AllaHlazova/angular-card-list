@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ListService} from './services/list.service';
-
 
 @Component({
   selector: 'app-root',
@@ -8,8 +6,6 @@ import { ListService} from './services/list.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
-  title = 'JuniorTest';
 
   constructor() {}
 

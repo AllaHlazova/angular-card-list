@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Chart} from 'angular-highcharts';
 import {SeriesOptionsType} from 'highcharts';
-import {IChartConfig} from '../chartInt';
-
-// const testData = [{name: '05', y: 5}, {y: 2.5, color: '#eee'}];
-
-// create new file for interfaces
+import {IChartConfig} from './chart';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ChartService {
-
+  constructor() { }
+  // chart
   public createChart(config: IChartConfig): Chart {
     return new Chart({
       chart: {
@@ -77,16 +74,10 @@ export class ChartService {
           fontSize: '20px',
           fontWeight: 'bold'
         },
-        // text: `<div style="text-align: center; font-weight: lighter;font-size: 15px;">${testData[0].name} <br> Leave Balance</div>`,
-        // text: `<div>${testData[0].name} <br> Leave Balance</div>`,
-
         text: config.text,
         useHTML: config.useHTML,
         verticalAlign: 'middle',
-        // y: 25
       }
     });
   }
-
-  constructor() { }
 }

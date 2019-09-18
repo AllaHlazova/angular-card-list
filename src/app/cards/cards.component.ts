@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListService } from '../services/list.service';
-import { User } from '../list';
+import {Card} from '../services/list';
 
 @Component({
   selector: 'app-cards',
@@ -8,13 +8,12 @@ import { User } from '../list';
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
-  userList: User[] = [];
+  cardList: Card[] = [];
 
   constructor(private httpService: ListService) {}
 
   ngOnInit() {
-    this.httpService.getData().subscribe((data: User[]) => this.userList = data );
-    console.log( this.userList);
+    // request to server
+    this.httpService.getData().subscribe((data: Card[]) => this.cardList = data );
   }
-
 }

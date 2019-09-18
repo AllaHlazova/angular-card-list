@@ -1,9 +1,7 @@
-<ul class="d-flex flex-row flex-wrap justify-content-sm-around">
-<!--  let ind и др.параметры этого *ngFor-->
-  <ng-container *ngFor="let user of userList;
+<ul class="d-flex flex-row flex-wrap justify-content-sm-around p-0">
+  <ng-container *ngFor="let user of cardList;
   let ind = index; let odd =  odd; let even = even;
    let last = last;let first = first">
-<!--[userObj]="user" - в квадр.скобках это атрибут-->
-    <app-card [userObj]="user" [id]="ind"></app-card>
+    <app-card [cardObj]="user" [id]="ind"></app-card>
   </ng-container>
 </ul>

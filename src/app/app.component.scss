@@ -1,6 +1,9 @@
-.max-width{
+.max-width {
   max-width: 768px;
+
+  &.bg-col {
+    background-color: #f3f7f9;
+    min-height: 100vh;
+  }
 }
-.bg-col{
-    background-color: #adb5bd2e;
-}
+

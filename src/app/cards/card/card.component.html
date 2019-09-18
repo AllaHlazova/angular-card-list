@@ -1,13 +1,13 @@
 <li class="card">
-  <div [routerLink]="[id]" class="d-flex flex-column justify-content-center">
-    <div *ngIf="userObj.isInfoCard; else nonInfoCard">
-      <div id="TestDonut" [chart]="chart" class="m-auto p-0"></div>
+  <div [routerLink]="[id]" class="d-flex flex-column justify-content-center text-center">
+    <div *ngIf="cardObj.isInfoCard; else nonInfoCard">
+      <div [chart]="chart" class="m-auto py-0"></div>
       <div class="st-f-title pt-0"> Leave </div>
     </div>
     <ng-template #nonInfoCard>
-      <div class="st-f-subTit mt-3">{{userObj.subTitle}}</div>
-      <div class="st-f-date font-weight-bold">{{userObj.date * 1000 | date}}</div>
-      <div class="st-f-title font-weight-bold"> {{userObj.title}}</div>
+      <div class="st-f-subTit mt-3">{{cardObj.subTitle}}</div>
+      <div class="st-f-date font-weight-bold">{{cardObj.date * 1000 | date}}</div>
+      <div class="st-f-title font-weight-bold"> {{cardObj.title}}</div>
     </ng-template>
   </div>
 </li>

@@ -2,19 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Chart} from 'angular-highcharts';
 import {ChartService} from '../services/chart.service';
-import {IChartConfig} from '../chartInt';
-import {User} from '../list';
+import {IChartConfig} from '../services/chart';
+import {Card} from '../services/list';
+import {ListService} from '../services/list.service';
 
-
-/* чтобы установить плагин,надо  установить нпм(https://www.npmjs.com/package/angular-highcharts)
-вынести в переменную параметры. здесь не важно в каком месте класса вставить код-поэтому создали перем.внутри - chart.
-название перем. должно совпадать с названием в файле card-detail.component.html
-
-спросить почему дописали 'as SeriesOptionsType'
- */
-
-// const testData = [{name: '&nbsp&nbsp 05', y: 5}, {name: ' ', y: 2, color: '#eee'}];
-
+const FULL_CHART = 7;
 
 @Component({
   selector: 'app-card-detail',
@@ -23,120 +15,60 @@ import {User} from '../list';
 })
 
 export class CardDetailComponent implements OnInit {
-
-
-  // когда юзали чарт в одном месте использовали эту конструкцию.
-  // public chart: Chart = new Chart({
-  //   chart: {
-  //     backgroundColor: 'transparent',
-  //     margin: [0, 0, 0, 0],
-  //     renderTo: 'TestDonut',
-  //     spacing: [0, 0, 0, 0],
-  //     type: 'pie',
-  //     height: 250,
-  //     width: 250
-  //   },
-  //   colors: ['#1e90ff85'],
-  //   credits: {
-  //     enabled: false
-  //   },
-  //   exporting: {
-  //     enabled: false
-  //   },
-  //   legend: {
-  //     enabled: false
-  //   },
-  //   plotOptions: {
-  //     series: {
-  //       dataLabels: {
-  //         enabled: true,
-  //         color: 'red'
-  //       }
-  //     },
-  //     pie: {
-  //       allowPointSelect: false,
-  //       dataLabels: {
-  //         connectorWidth: 0,
-  //         enabled: false
-  //       },
-  //       shadow: false,
-  //       states: {
-  //         hover: {
-  //           enabled: false
-  //         }
-  //       },
-  //     },
-  //   },
-  //   tooltip: {
-  //     enabled: false
-  //   },
-  //   series: [
-  //     {
-  //       data: testData,
-  //       name: '',
-  //       size: 200,
-  //       innerSize: 170,
-  //       pointPadding: 0,
-  //       groupPadding: 0,
-  //       type: 'pie'
-  //     } as SeriesOptionsType
-  //   ],
-  //   title: {
-  //     align: 'center',
-  //     style: {
-  //       color: '#696969',
-  //       fontFamily: 'Arial, Helvetica, sans',
-  //       fontSize: '35px',
-  //       fontWeight: 'bold'
-  //     },
-  //     text: testData[0].name + '<div style="font-weight: lighter;font-size: 15px;">Leave Balance</div>',
-  //     useHTML: true,
-  //     verticalAlign: 'middle',
-  //     y: 25
-  //   }
-  // });
+  public cardObj: Card;
+  public chartData;
+  public chart: Chart;
+  public prm: IChartConfig;
 
   @Input() request;
 
-  constructor(private route: ActivatedRoute, private chartService: ChartService) {}
-
-  ngOnInit() {
-    //routing
-    this.route.params.subscribe((params: Params) => {
-      console.log(params.cardId);
-
-
-      // this.http.get('api/cardDetail', {
-      //         id: params.cardId
-      //       }).subscribe((data) => {
-      //         this.getCard = data;
-      //       })//чтобы получить айдишник карты
-    });
-
-    this.route.params.subscribe((params: Params) => {
-      console.log(params.cardId.user);
-    });
-
-    public userObj: User;
-
-    public testData = [{name: this.userObj.daysLeft, y: 5}, {y: 2.5, color: '#eee'}];
-
-    public prm: IChartConfig = {
-      height: 250,
-      width: 250,
-      size: 200,
-      innerSize: 170,
-      data: this.testData,
-      text:
-        `<div style="text-align: center;font-size: 35px">${this.testData[0].name}<div style="font-weight:lighter; font-size:20px;"> Leave Balance </div></div>`,
-      useHTML: true,
-      name: this.testData[0].name
-    };
-
-    //  чтобы воспользоваться сервисом, создаем тут переменную(такая же как и в другом компоненте,где мы юзаем данный  чарт сервис)
-    // и пишем в конструкторе то же,как и в другом компоненте.так же в хтмл обращаемся к переменной чарт-чтобы вызвать метод.
-
-    public chart: Chart; // = this.chartService.createChart(this.prm);
+  constructor(private route: ActivatedRoute, private chartService: ChartService, private httpService: ListService) {
   }
+  ngOnInit() {
+    // routing.get id of card
+    this.route.params.subscribe((params: Params) => {
+      // request on cardObj to server based on the selected id
+      this.httpService.getData().subscribe((data: Card[]) => {
+        data.forEach((card, ind) => {
+          if (+params.cardId === ind) {
+            this.cardObj =  card;
+          }
+        });
+
+        const daysLeft = this.cardObj.daysLeft || 0;
+
+        this.chartData = [
+          {
+            name: daysLeft,
+            y: +daysLeft
+          },
+          {
+            y: FULL_CHART - daysLeft,
+            color: '#eee'
+          }
+        ];
+        // new params for chart
+        this.prm = {
+          height: 250,
+          width: 250,
+          size: 200,
+          innerSize: 170,
+          data: this.chartData,
+          text:
+            `<div style="text-align: center;font-size: 35px">${this.chartData[0].name}
+              <div style="font-weight:lighter; font-size:20px;"> Leave Balance </div>
+          </div>`,
+          useHTML: true,
+          name: this.chartData[0].name
+        };
+        // create chart with new params
+        this.chart = this.chartService.createChart(this.prm);
+      });
+    });
+  }
+}
+
+
+
 
 

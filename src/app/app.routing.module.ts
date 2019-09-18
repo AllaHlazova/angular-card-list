@@ -7,7 +7,11 @@ import { MainCardDetailComponent } from './main-card-detail/main-card-detail.com
 
 
 const ROUTERS: Route[] = [
-  {path: '', redirectTo: 'cards', pathMatch: 'full'},
+  {
+    path: '',
+    redirectTo: 'cards',
+    pathMatch: 'full'
+  },
   {
     path: 'cards',
     component: CardsComponent,

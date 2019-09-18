@@ -1,4 +1,4 @@
-export class User {
+export class Card {
   title: string;
   subTitle: string;
   date: number;
