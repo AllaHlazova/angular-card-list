@@ -10,10 +10,12 @@ import {Card} from '../services/list';
 export class CardsComponent implements OnInit {
   cardList: Card[] = [];
 
-  constructor(private httpService: ListService) {}
+  constructor(public httpService: ListService) {}
 
   ngOnInit() {
     // request to server
     this.httpService.getData().subscribe((data: Card[]) => this.cardList = data );
   }
 }
+
+

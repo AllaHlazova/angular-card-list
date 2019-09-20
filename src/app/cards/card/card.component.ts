@@ -3,7 +3,7 @@ import {Card} from '../../services/list';
 import {ListService} from '../../services/list.service';
 import {ChartService} from '../../services/chart.service';
 import {Chart} from 'angular-highcharts';
-import {generateColor, IChartConfig} from '../../services/chart';
+import { generateColor, IChartConfig} from '../../services/chart';
 
 const FULL_CHART = 7;
 
@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
   constructor(private httpService: ListService, private chartService: ChartService) {}
 
   ngOnInit() {
-    const daysLeft = this.cardObj.daysLeft || 0;
+    const daysLeft = this.cardObj ? this.cardObj.daysLeft || 0 : 0;
     const color = generateColor();
     const chartData: any[] = [
       {

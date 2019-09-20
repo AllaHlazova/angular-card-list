@@ -10,7 +10,7 @@ export class ListService {
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<Card[]> {
+  public getData(): Observable<Card[]> {
     return this.http.get('/assets/list.json') as Observable<Card[]>;
   }
 }

@@ -128,7 +128,7 @@
     "title": "Leave",
     "subTitle": "",
     "date": 0,
-    "daysLeft": 5,
+    "daysLeft": "",
     "isInfoCard": true
   }
 ]

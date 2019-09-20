@@ -24,19 +24,22 @@ export class CardDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private chartService: ChartService, private httpService: ListService) {
   }
+
   ngOnInit() {
     // routing.get id of card
     this.route.params.subscribe((params: Params) => {
       // request on cardObj to server based on the selected id
+
+      // if (params.cardId) {
+      //
+      // }
       this.httpService.getData().subscribe((data: Card[]) => {
         data.forEach((card, ind) => {
           if (+params.cardId === ind) {
-            this.cardObj =  card;
+            this.cardObj = card;
           }
         });
-
-        const daysLeft = this.cardObj.daysLeft || 0;
-
+        const daysLeft = this.cardObj ? this.cardObj.daysLeft || 0 : 0;
         this.chartData = [
           {
             name: daysLeft,
