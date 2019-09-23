@@ -29,10 +29,6 @@ export class CardDetailComponent implements OnInit {
     // routing.get id of card
     this.route.params.subscribe((params: Params) => {
       // request on cardObj to server based on the selected id
-
-      // if (params.cardId) {
-      //
-      // }
       this.httpService.getData().subscribe((data: Card[]) => {
         data.forEach((card, ind) => {
           if (+params.cardId === ind) {

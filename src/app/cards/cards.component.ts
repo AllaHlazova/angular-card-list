@@ -12,7 +12,7 @@ export class CardsComponent implements OnInit {
 
   constructor(public httpService: ListService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     // request to server
     this.httpService.getData().subscribe((data: Card[]) => this.cardList = data );
   }

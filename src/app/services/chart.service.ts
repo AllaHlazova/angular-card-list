@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Chart} from 'angular-highcharts';
-import {SeriesOptionsType} from 'highcharts';
-import {IChartConfig} from './chart';
+import { Chart} from 'angular-highcharts';
+import { SeriesOptionsType } from 'highcharts';
+import { IChartConfig } from './chart';
 
 @Injectable({
   providedIn: 'root'

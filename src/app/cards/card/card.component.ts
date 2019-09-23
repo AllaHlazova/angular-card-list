@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Card} from '../../services/list';
-import {ListService} from '../../services/list.service';
-import {ChartService} from '../../services/chart.service';
-import {Chart} from 'angular-highcharts';
-import { generateColor, IChartConfig} from '../../services/chart';
+import { Component, Input, OnInit } from '@angular/core';
+import { Card } from '../../services/list';
+import { ListService } from '../../services/list.service';
+import { ChartService } from '../../services/chart.service';
+import { Chart } from 'angular-highcharts';
+import { generateColor, IChartConfig } from '../../services/chart';
 
 const FULL_CHART = 7;
 
