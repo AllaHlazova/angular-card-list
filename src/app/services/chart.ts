@@ -16,4 +16,3 @@ export function generateColor(): string {
   return 'rgb(' + red + ',' + green + ',' + blue + ')';
 }
 
-
