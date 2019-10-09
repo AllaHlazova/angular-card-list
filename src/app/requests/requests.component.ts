@@ -18,7 +18,6 @@ export class RequestsComponent implements OnInit, OnDestroy {
       this.router.navigate(['']);
     }, 5000);
   }
-
   ngOnDestroy() {
     clearTimeout(this.timeout);
   }
